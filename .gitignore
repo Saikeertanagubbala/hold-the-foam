@@ -1,0 +1,17 @@
+# OS clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+.claude/
+
+# Netlify CLI local folder
+.netlify/
+
+# Raw, uncompressed footage and CAD source files (keep originals off GitHub)
+assets/videos/raw/
+*.dwg
+*.bak

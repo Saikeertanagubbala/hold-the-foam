@@ -1,0 +1,16 @@
+# Netlify settings. Plain static site: no build step, publish the repo root.
+[build]
+  publish = "."
+
+# Serve the 3D model with a proper type so browsers download it cleanly.
+[[headers]]
+  for = "/assets/models/*"
+  [headers.values]
+    Content-Type = "model/stl"
+    Cache-Control = "public, max-age=604800"
+
+# Let browsers cache images and videos for a week.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

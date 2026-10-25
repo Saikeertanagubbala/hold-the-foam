@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Hold the Foam</title>
+  <meta name="description" content="Hold the Foam: demos, a 3D coffee lid, and where to find me online.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Barlow+Condensed:wght@500;700&family=Karla:wght@400;600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="lid">
+      <svg viewBox="0 0 400 400" aria-hidden="true">
+        <defs>
+          <path id="rim" d="M200,200 m-172,0 a172,172 0 1,1 344,0 a172,172 0 1,1 -344,0"></path>
+        </defs>
+        <circle cx="200" cy="200" r="196" fill="var(--lid-shade)"></circle>
+        <circle cx="200" cy="200" r="190" fill="var(--lid)"></circle>
+        <circle cx="200" cy="200" r="160" fill="none" stroke="var(--lid-shade)" stroke-width="4"></circle>
+        <circle cx="200" cy="200" r="150" fill="var(--lid)" stroke="var(--lid-shade)" stroke-width="1.5"></circle>
+        <circle cx="200" cy="200" r="118" fill="none" stroke="var(--lid-shade)" stroke-width="1" stroke-dasharray="2 6"></circle>
+        <!-- sip opening -->
+        <rect x="168" y="44" width="64" height="16" rx="8" fill="var(--fg)" opacity=".85"></rect>
+        <rect x="160" y="38" width="80" height="28" rx="14" fill="none" stroke="var(--lid-shade)" stroke-width="3"></rect>
+        <text font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="13" letter-spacing="3" fill="var(--lid-ink)">
+          <textPath href="#rim" startOffset="0">CAUTION · CONTENTS HOT · HOLD THE FOAM · LIFT TO SIP · RECYCLE ME · 12 / 16 / 20 OZ ·</textPath>
+        </text>
+      </svg>
+      <div class="lid-face">
+        <h1>Hold the Foam</h1>
+        <span class="tagline">by Your Name</span>
+        <nav class="bubbles" aria-label="Sections">
+          <a class="bubble" href="#about">About</a>
+          <a class="bubble" href="#videos">Videos</a>
+          <a class="bubble" href="#lid-3d">3D Lid</a>
+          <a class="bubble" href="#connect">Connect</a>
+        </nav>
+      </div>
+    </div>
+    <p class="hero-note">Press a bubble on the lid, the same way a barista marks your order.</p>
+  </header>
+
+  <section id="about">
+    <div class="section-head"><span class="eyebrow">Fresh brew</span><h2>About me</h2></div>
+    <div class="about">
+      <div>
+        <p>Hi, I'm Your Name. I make short videos about the things I'm learning and building. Replace this paragraph with a few sentences about who you are and what you do.</p>
+        <p>Add a second paragraph about what people can expect from your demos, or what you're working on right now.</p>
+      </div>
+      <aside class="ticket" aria-label="Quick facts">
+        <h3>Order ticket</h3>
+        <dl>
+          <dt>Name</dt><dd>Your Name</dd>
+          <dt>Based in</dt><dd>Your City</dd>
+          <dt>Making</dt><dd>Tutorials &amp; demos</dd>
+          <dt>Fuel</dt><dd>Oat latte, 16 oz</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section id="videos">
+    <div class="section-head"><span class="eyebrow">On the menu</span><h2>Demo videos</h2></div>
+    <!-- Each video reads from assets/videos/ and its poster from assets/images/thumbnails/.
+         Until a file exists, the card shows which file name to add. -->
+    <div class="videos">
+      <figure class="video">
+        <div class="thumb">
+          <video controls preload="metadata" playsinline src="assets/videos/demo-1.mp4" poster="assets/images/thumbnails/demo-1.jpg"></video>
+        </div>
+        <figcaption>Demo one: replace with your video title</figcaption>
+      </figure>
+      <figure class="video">
+        <div class="thumb b">
+          <video controls preload="metadata" playsinline src="assets/videos/demo-2.mp4" poster="assets/images/thumbnails/demo-2.jpg"></video>
+        </div>
+        <figcaption>Demo two: a quick walkthrough</figcaption>
+      </figure>
+      <figure class="video">
+        <div class="thumb c">
+          <video controls preload="metadata" playsinline src="assets/videos/demo-3.mp4" poster="assets/images/thumbnails/demo-3.jpg"></video>
+        </div>
+        <figcaption>Demo three: behind the scenes</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="lid-3d">
+    <div class="section-head"><span class="eyebrow">Under the lid</span><h2>The lid in 3D</h2></div>
+    <div class="viewer">
+      <div class="stage" id="lid-stage" aria-label="Interactive 3D model of the coffee lid. Drag to rotate, scroll or pinch to zoom."></div>
+      <div class="viewer-bar">
+        <div class="views" role="group" aria-label="Camera views">
+          <button type="button" class="chip" data-view="top">Top</button>
+          <button type="button" class="chip" data-view="front">Front</button>
+          <button type="button" class="chip" data-view="right">Side</button>
+          <button type="button" class="chip" data-view="bottom">Bottom</button>
+          <button type="button" class="chip" data-view="iso">Iso</button>
+        </div>
+        <div class="views" role="group" aria-label="Display">
+          <button type="button" class="chip" id="toggle-wire" aria-pressed="false">Wireframe</button>
+          <button type="button" class="chip" id="toggle-spin" aria-pressed="true">Spin</button>
+        </div>
+      </div>
+      <p class="viewer-status" id="lid-status">Loading model…</p>
+      <p class="viewer-help">Drag to orbit · Right-drag or two fingers to pan · Scroll or pinch to zoom</p>
+    </div>
+  </section>
+
+  <section id="connect">
+    <div class="section-head"><span class="eyebrow">Take it to go</span><h2>Find me online</h2></div>
+    <div class="socials">
+      <a class="social" href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+      <a class="social" href="https://www.instagram.com/" target="_blank" rel="noopener">Insta&shy;gram</a>
+      <a class="social" href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+      <a class="social" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="social" href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="contact">
+      <span class="email" id="email">hello@example.com</span>
+      <button class="btn" id="copy" type="button">Copy email</button>
+    </div>
+  </section>
+
+  <footer>© 2026 Hold the Foam · Served hot</footer>
+</div>
+
+<script src="js/main.js"></script>
+<script type="module" src="js/lid-viewer.js"></script>
+</body>
+</html>
